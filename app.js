@@ -6,7 +6,10 @@ var mongoose =require("mongoose");
 var methodOverride=require("method-override");
 app.use(methodOverride("_method"));
 // mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb+srv://vinoth:vinothvinoth@cluster0-5l3nd.mongodb.net/test?retryWrites=true&w=majority");
+// mongoose.connect("mongodb+srv://vinoth:vinothvinoth@cluster0-5l3nd.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect(`mongodb://${process.env.MONGOUSER}:${process.env.MONGOPASSWORD}@pydow-shard-00-00-15jok.mongodb.net:27017,pydow-shard-00-01-15jok.mongodb.net:27017,pydow-shard-00-02-15jok.mongodb.net:27017/PydowDatabase?ssl=true&replicaSet=Pydow-shard-0&authSource=admin&retryWrites=true`,{
+useNewUrlParser: true, 
+}, function(error){console.log(error)});
 var passport=require("passport");
 var localStrategy =require("passport-local");
 var passportLocalMongoose=require("passport-local-mongoose");

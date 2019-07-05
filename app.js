@@ -5,19 +5,8 @@ var bodyparser =require("body-parser");
 var mongoose =require("mongoose");
 var methodOverride=require("method-override");
 app.use(methodOverride("_method"));
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://vinoth:vinothvinoth@cluster0-5l3nd.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
 // mongoose.connect("mongodb://localhost/yelp_camp");
 mongoose.connect("mongodb+srv://vinoth:vinothvinoth@cluster0-5l3nd.mongodb.net/test?retryWrites=true&w=majority");
-
-
-
 var passport=require("passport");
 var localStrategy =require("passport-local");
 var passportLocalMongoose=require("passport-local-mongoose");
